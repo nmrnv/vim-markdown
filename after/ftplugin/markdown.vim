@@ -72,12 +72,12 @@ if get(g:, 'vim_markdown_folding_style_pythonic', 0)
         "if we're on a non-code line starting with a pound sign
         if l1 =~# '^#' && !s:is_mkdCode(a:lnum)
             let nhashes = matchend(l1, '^#\+')
-            if nhashes > 2
-                return '>'.(nhashes)
-            elseif nhashes == 2
+            if nhashes == 2
                 return '>1'
-            return '>2'
-        " else, if we're on line 1
+            elseif nhashes == 1
+                return '>2'
+            endif
+            return '>'.(nhashes)
         elseif a:lnum == 1
             " fold any 'preamble'
             return '>1'
