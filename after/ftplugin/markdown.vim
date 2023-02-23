@@ -89,14 +89,15 @@ if get(g:, 'vim_markdown_folding_style_pythonic', 0)
 
     function! Foldtext_markdown()
         let line = getline(v:foldstart)
-        let has_numbers = &number || &relativenumber
-        let nucolwidth = &foldcolumn + has_numbers * &numberwidth
-        let windowwidth = winwidth(0) - nucolwidth - 6
-        let foldedlinecount = v:foldend - v:foldstart
-        let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-        let line = substitute(line, '\%("""\|''''''\)', '', '')
-        let fillcharcount = windowwidth - len(line) - len(foldedlinecount) + 1
-        return line . ' ' . repeat('-', fillcharcount) . ' ' . foldedlinecount
+        " let has_numbers = &number || &relativenumber
+        " let nucolwidth = &foldcolumn + has_numbers * &numberwidth
+        " let windowwidth = winwidth(0) - nucolwidth - 6
+        " let foldedlinecount = v:foldend - v:foldstart
+        " let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+        " let line = substitute(line, '\%("""\|''''''\)', '', '')
+        " let fillcharcount = windowwidth - len(line) - len(foldedlinecount) + 1
+        " return line . ' ' . repeat('-', fillcharcount) . ' ' . foldedlinecount
+        return line
     endfunction
 else " vim_markdown_folding_style_pythonic == 0
     function! Foldexpr_markdown(lnum)
