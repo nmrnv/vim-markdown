@@ -16,6 +16,7 @@ if get(g:, 'vim_markdown_folding_style_pythonic', 0)
     function! Foldexpr_markdown(lnum)
         if (a:lnum == 1)
             let b:fence_str = ''
+            return '0'
         endif
 
         let l1 = getline(a:lnum)
